@@ -323,7 +323,7 @@ public class SheetViewController: UIViewController {
         self.contentViewController.didMove(toParent: self)
         self.contentViewController.delegate = self
         Constraints(for: self.contentViewController.view) {
-            $0.left.pinToSuperview().priority = UILayoutPriority(999)
+            $0.left.pinToSuperview().priority = UILayoutPriority(self.options.shouldUseIntrinsicWidth ? 999 : 1000)
             $0.left.pinToSuperview(inset: self.options.horizontalPadding, relation: .greaterThanOrEqual)
             if let maxWidth = self.options.maxWidth {
                 $0.width.set(maxWidth, relation: .lessThanOrEqual)
